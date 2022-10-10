@@ -2,7 +2,6 @@ from pyjstat import pyjstat
 from urllib import response
 import requests
 
-
 post_url = "https://data.ssb.no/api/v0/no/table/09588/"
 
 payload = {
@@ -66,12 +65,18 @@ payload = {
 }
 
 response = requests.post(post_url, json=payload)
+
+data = response.json()
+
+
+
+
 print(response)
 
 
 data = pyjstat.Dataset.read(response.text)
 
-print(response.text)
+
 dataframe = data.write('dataframe')
 dataframe.head()
 dataframe.tail()
